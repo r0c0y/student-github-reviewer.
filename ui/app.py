@@ -10,8 +10,8 @@ if st.button("Analyze Portfolio"):
     if username:
         with st.spinner(f"Analyzing {username}'s repositories..."):
             try:
-                # Pointing back to localhost for local testing
-                response = requests.post(f"http://127.0.0.1:8000/review?username={username}")
+                # Pointing to the production API on Render for deployment
+                response = requests.post(f"https://github-reviewer-api-gr10.onrender.com/review?username={username}")
                 
                 if response.status_code == 200:
                     data = response.json()
